@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import ProfileImage from './ProfileImage';
+import ProfileImage from '../../../components/User/ProfileImage';
 
-const User = ({data, navigation}) => {
+const Previews = ({data, navigation}) => {
   return (
     <TouchableOpacity
       style={styles.header}
@@ -11,7 +11,7 @@ const User = ({data, navigation}) => {
       //   }}
     >
       <View>
-        <ProfileImage size={80} url={data.avatarUrl} />
+        <ProfileImage size={70} url={data.avatarUrl} />
       </View>
       <View style={styles.textArea}>
         <Text style={styles.textName}>{data.name}</Text>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   textName: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 15,
     marginTop: 20,
   },
 
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderColor: 'gray',
     flex: 1,
+    marginLeft: 10,
   },
 });
 
-export default User;
+export default Previews;

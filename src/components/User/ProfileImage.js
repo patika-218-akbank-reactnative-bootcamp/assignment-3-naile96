@@ -11,15 +11,12 @@ const ProfileImage = ({url, size = 77}) => {
 
 const styles = StyleSheet.create({
   view: {
-    margin: 5,
-    borderRadius: 50,
+    margin: 6,
   },
   image: {
     height: '100%',
     width: '100%',
     borderRadius: 40,
-    borderWidth: 4,
-    borderColor: '#FFFFFF',
   },
 });
 

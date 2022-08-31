@@ -5,7 +5,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import ContactList from './contacts/ContactList';
-import MessageList from './message/MessageList';
+import MessageList from './chats/MessageList';
 import SettingsScreen from './settings/SettingsScreen';
 import Edit from './settings/Edit';
 import Theme from './settings/Theme';
