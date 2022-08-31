@@ -1,9 +1,11 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 import Welcome from './src/pages/Welcome';
 import MemberSign from './src/pages/MemberSign';
+import MainPage from './src/pages/main/MainPage';
 
 // function HomeScreen() {
 //   return (
@@ -13,18 +15,15 @@ import MemberSign from './src/pages/MemberSign';
 //     </View>
 //   );
 // }
-
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="WelcomeScreen" component={Welcome} />
         <Stack.Screen name="MemberSignScreen" component={MemberSign} />
+        <Stack.Screen name="MainScreen" component={MainPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
