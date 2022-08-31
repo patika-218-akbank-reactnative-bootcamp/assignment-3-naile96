@@ -5,13 +5,15 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import ContactList from './contacts/ContactList';
-import MessageList from './chats/MessageList';
+import ChatList from './chats/ChatList';
 import SettingsScreen from './settings/SettingsScreen';
 import Edit from './settings/Edit';
 import Theme from './settings/Theme';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Search from '../../components/Search';
+import {useNavigation} from '@react-navigation/native';
 
-const Tab = createBottomTabNavigator();
+const Bottom = createBottomTabNavigator();
 
 const Stack = createNativeStackNavigator();
 
@@ -25,25 +27,35 @@ const SettingsStack = () => {
   );
 };
 
+// const SettingsScreen = () => {
+//   const {navigate} = useNavigation();
+// }
+
 const MainPage = () => {
   return (
-    <Tab.Navigator initialRouteName="Chats">
-      <Tab.Screen
+    <Bottom.Navigator initialRouteName="Chats">
+      <Bottom.Screen
         name="Contacts"
         component={ContactList}
         options={{
           headerShown: false,
-          tabBarIcon: props => (
+          BottomBarIcon: props => (
             <Ionicons size={30} name="person-circle-outline" />
           ),
         }}
       />
-      <Tab.Screen
+      <Bottom.Screen
         name="Chats"
-        component={MessageList}
+        component={ChatList}
         options={{
-          headerStyle: {height: 120, backgroundColor: '#E7E7E7'},
-          tabBarIcon: props => (
+          header: () => {
+            return (
+              <View>
+                <Search />
+              </View>
+            );
+          },
+          BottomBarIcon: props => (
             <Ionicons size={30} name="chatbubbles-outline" />
           ),
 
@@ -57,17 +69,17 @@ const MainPage = () => {
           ),
         }}
       />
-      <Tab.Screen
+      <Bottom.Screen
         name="Settings"
         component={SettingsStack}
         options={{
           headerShown: false,
-          tabBarIcon: ({tintColor}) => (
+          BottomBarIcon: ({tintColor}) => (
             <Ionicons size={30} name="cog-outline" />
           ),
         }}
       />
-    </Tab.Navigator>
+    </Bottom.Navigator>
   );
 };
 
