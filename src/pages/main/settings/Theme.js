@@ -1,17 +1,15 @@
-import {View, Text, Switch} from 'react-native';
-import React from 'react';
+import {View, Button, Switch} from 'react-native';
+import React, {useState} from 'react';
 
-
-const Theme = () => {
-
-  const [mode, setMode] = useStete(false);
+export default function Theme() {
+  const [mode, setMode] = useState(false);
 
   return (
     <View>
-      <Switch value={mode} onValueChange={() => setMode((value) => !value)} />
-      
+      <Switch value={mode} onValueChange={() => setMode(value => !value)} />
+      <View>
+        <Button title="View Profile" />
+      </View>
     </View>
   );
-};
-
-export default Theme;
+}

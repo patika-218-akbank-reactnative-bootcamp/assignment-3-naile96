@@ -7,6 +7,7 @@ import Welcome from './src/pages/Welcome';
 import MemberSign from './src/pages/MemberSign';
 import MainPage from './src/pages/main/MainPage';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import ChatDetails from './src/pages/main/chats/ChatDetails';
 
 // function HomeScreen() {
 //   return (
@@ -27,6 +28,7 @@ function App() {
             <Stack.Screen name="WelcomeScreen" component={Welcome} />
             <Stack.Screen name="MemberSignScreen" component={MemberSign} />
             <Stack.Screen name="MainScreen" component={MainPage} />
+            <Stack.Screen name="ChatDetails" component={ChatDetails} />
           </Stack.Navigator>
         </NavigationContainer>
       </ThemeProvider>

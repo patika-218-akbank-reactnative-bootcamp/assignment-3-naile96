@@ -1,42 +1,55 @@
-import {View, Text, StyleSheet} from 'react-native';
-import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  TextInput,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
+import React, {useEffect} from 'react';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import Input from '../../../components/input/Input';
+import Send from './Send';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+var allData = [];
+const ChatDetails = ({navigation, route}) => {
+  const [dataUpdated, setDataUpdated] = React.useState(false);
 
-const ChatDetails = ({messages}) => {
   const isMyMassage = () => {
-    return messages.userId === 'u1';
+    return true;
+    // return messages.userId === 'u1';
   };
 
-  const styles = StyleSheet.create({
-    name: {
-      color: '#075E54',
-      fontWeight: 'bold',
-      marginBottom: 5,
-    },
-    text: {
-      fontSize: 15,
-    },
-    ballon: {
-      backgroundColor: isMyMassage() ? '#dcf8c5' : 'white',
-      marginRight: isMyMassage() ? 5 : 55,
-      marginLeft: isMyMassage() ? 55 : 5,
-      borderRadius: 15,
-      padding: 10,
-      margin: 5,
-    },
-    date: {
-      alignSelf: 'flex-end',
-      color: 'gray',
-    },
+  useEffect(() => {
+    setInterval(() => {
+      AsyncStorage.getItem('naile').then(messages => {
+        allData = JSON.parse(messages);
+        setDataUpdated(!dataUpdated);
+      });
+    }, 2000);
   });
+
+  const image = require('../../../../assets/Telegram.jpg');
+
   return (
-    <View style={styles.ballon}>
-      <Text style={styles.name}>{messages.userName}</Text>
-      <Text style={styles.text}>{messages.text}</Text>
-      <Text style={styles.date} key={messages.date}>
-        {messages.date}
-      </Text>
-    </View>
+    <ImageBackground style={styles.image} source={image}>
+      <FlatList
+        data={allData}
+        extraData={dataUpdated}
+        renderItem={({item}) => <Text>{item}</Text>}
+      />
+      <Text>{route.params.name}</Text>
+      <Send name={route.params.name} />
+    </ImageBackground>
   );
 };
+
+const styles = StyleSheet.create({
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+});
 
 export default ChatDetails;

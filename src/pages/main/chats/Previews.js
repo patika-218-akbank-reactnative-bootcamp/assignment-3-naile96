@@ -5,6 +5,9 @@ import ProfileImage from '../../../components/User/ProfileImage';
 const Previews = ({data, navigation}) => {
   return (
     <TouchableOpacity
+      onPress={() => {
+        navigation.navigate({name: 'ChatDetails', params: {name: data.name}});
+      }}
       style={styles.header}
       //   onPress={() => {
       //     navigation.navigate('ChatDetails', {data: data});

@@ -6,7 +6,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {Image} from 'react-native';
 const image = require('../../assets/logo.svg.png');
 
-
 const Welcome = ({navigation}) => {
   function goToMemberSign() {
     console.log(global.userData);
