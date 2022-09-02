@@ -1,4 +1,4 @@
-import {FlatList, ScrollView} from 'react-native';
+import {FlatList, SafeAreaView} from 'react-native';
 import React from 'react';
 import Previews from './Previews';
 import {Profiles} from '../../../components/Data';
@@ -6,7 +6,7 @@ import Search from '../../../components/Search';
 
 const MessageList = ({navigation}) => {
   return (
-    <ScrollView>
+    <SafeAreaView>
       <Search />
       <FlatList
         data={Profiles}
@@ -14,7 +14,7 @@ const MessageList = ({navigation}) => {
           <Previews data={item} navigation={navigation} />
         )}
       />
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 

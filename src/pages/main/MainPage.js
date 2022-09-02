@@ -38,9 +38,16 @@ const MainPage = () => {
         name="Contacts"
         component={ContactList}
         options={{
-          headerShown: false,
-          BottomBarIcon: props => (
+          tabBarIcon: props => (
             <Ionicons size={30} name="person-circle-outline" />
+          ),
+          headerLeft: props => (
+            <View>
+              <Button onPress={null} title="Edit" color="#0070FF" />
+            </View>
+          ),
+          headerRight: props => (
+            <Ionicons size={30} color="#0070FF" name="create-outline" />
           ),
         }}
       />
@@ -48,14 +55,7 @@ const MainPage = () => {
         name="Chats"
         component={ChatList}
         options={{
-          header: () => {
-            return (
-              <View>
-                <Search />
-              </View>
-            );
-          },
-          BottomBarIcon: props => (
+          tabBarIcon: props => (
             <Ionicons size={30} name="chatbubbles-outline" />
           ),
 
@@ -74,7 +74,7 @@ const MainPage = () => {
         component={SettingsStack}
         options={{
           headerShown: false,
-          BottomBarIcon: ({tintColor}) => (
+          tabBarIcon: ({tintColor}) => (
             <Ionicons size={30} name="cog-outline" />
           ),
         }}

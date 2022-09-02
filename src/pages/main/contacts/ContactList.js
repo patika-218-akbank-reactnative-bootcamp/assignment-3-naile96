@@ -1,12 +1,21 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import {FlatList, View} from 'react-native';
+import React from 'react';
+import Search from '../../../components/Search';
+import Previews from '../chats/Previews';
+import {Profiles} from '../../../components/Data';
 
-const ContactList = () => {
+const ContactList = ({navigation}) => {
   return (
     <View>
-      <Text>ContactList</Text>
+      <Search />
+      <FlatList
+        data={Profiles}
+        renderItem={({item}) => (
+          <Previews data={item} navigation={navigation} />
+        )}
+      />
     </View>
-  )
-}
+  );
+};
 
-export default ContactList
+export default ContactList;

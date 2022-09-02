@@ -1,10 +1,15 @@
-import {View, Text} from 'react-native';
+import {View, Text, Switch} from 'react-native';
 import React from 'react';
 
+
 const Theme = () => {
+
+  const [mode, setMode] = useStete(false);
+
   return (
     <View>
-      <Text>Theme</Text>
+      <Switch value={mode} onValueChange={() => setMode((value) => !value)} />
+      
     </View>
   );
 };
