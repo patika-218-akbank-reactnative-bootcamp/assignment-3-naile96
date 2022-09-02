@@ -12,6 +12,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Input from '../../../components/input/Input';
 import Send from './Send';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import ChatMessage from './ChatMessages';
 var allData = [];
 const ChatDetails = ({navigation, route}) => {
   const [dataUpdated, setDataUpdated] = React.useState(false);
@@ -27,7 +28,7 @@ const ChatDetails = ({navigation, route}) => {
         allData = JSON.parse(messages);
         setDataUpdated(!dataUpdated);
       });
-    }, 2000);
+    }, 3000);
   });
 
   const image = require('../../../../assets/Telegram.jpg');
@@ -37,7 +38,7 @@ const ChatDetails = ({navigation, route}) => {
       <FlatList
         data={allData}
         extraData={dataUpdated}
-        renderItem={({item}) => <Text>{item}</Text>}
+        renderItem={({item}) => <ChatMessage mtext={item} />}
       />
       <Text>{route.params.name}</Text>
       <Send name={route.params.name} />

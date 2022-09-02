@@ -11,18 +11,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Send = ({name}) => {
   var message = '';
-  async function sendMessage() {
+  function sendMessage() {
     console.log('message', message);
-    var messages = await AsyncStorage.getItem(name);
-    console.log('messages', messages);
-    if (messages == null) {
-      await AsyncStorage.setItem(name, JSON.stringify([message]));
-    } else {
-      var m = JSON.parse(messages);
-      m.push(message);
-      await AsyncStorage.setItem(name, JSON.stringify(m));
-      message = '';
-    }
+    AsyncStorage.getItem(name).then(messages => {
+      if (messages == null) {
+        AsyncStorage.setItem(name, JSON.stringify([message]));
+      } else {
+        var m = JSON.parse(messages);
+        m.push(message);
+        AsyncStorage.setItem(name, JSON.stringify(m));
+        message = '';
+      }
+    });
   }
   function draftMessage(text) {
     message = text;
